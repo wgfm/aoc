@@ -1,0 +1,12 @@
+use crate::problem::{NoSolution, Solution};
+
+mod d1;
+mod d2;
+
+fn b<T: Solution>(t: T) -> Box<T> {
+    Box::new(t)
+}
+
+pub fn solutions() -> anyhow::Result<Vec<Box<dyn Solution>>> {
+    Ok(vec![b(NoSolution::new()), b(d2::Problem::new()?)])
+}
