@@ -61,16 +61,16 @@ mod tests {
 
     #[test]
     fn test_part_b() {
-        let problem = Problem {
-            input: "two1nine
+        let problem = Problem::with_input(
+            "two1nine
 eightwothree
 abcone2threexyz
 xtwone3four
 4nineeightseven2
 zoneight234
-7pqrstsixteen"
-                .to_owned(),
-        };
+7pqrstsixteen",
+        );
+
         assert_eq!(problem.part_b().unwrap(), "281");
     }
 }

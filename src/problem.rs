@@ -17,6 +17,13 @@ macro_rules! solution {
                     input: crate::site::get_puzzle_input($year, $day)?,
                 })
             }
+
+            #[allow(dead_code)]
+            pub fn with_input(input: &str) -> Self {
+                Self {
+                    input: input.to_string(),
+                }
+            }
         }
     };
 }
