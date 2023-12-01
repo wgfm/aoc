@@ -11,10 +11,9 @@ use crate::{problem::Solution, solution};
 
 solution!(2015, 2);
 
-impl Solution for Problem {
-    fn part_a(&self) -> anyhow::Result<String> {
-        let boxes: Vec<RightRectangularPrism> = self
-            .input
+impl Problem {
+    fn boxes(&self) -> Vec<RightRectangularPrism> {
+        self.input
             .lines()
             .map(|l| {
                 all_consuming(RightRectangularPrism::parse)(l)
@@ -22,9 +21,14 @@ impl Solution for Problem {
                     .unwrap()
                     .1
             })
-            .collect();
+            .collect()
+    }
+}
 
-        let answer: u64 = boxes
+impl Solution for Problem {
+    fn part_a(&self) -> anyhow::Result<String> {
+        let answer: u64 = self
+            .boxes()
             .into_iter()
             .map(|RightRectangularPrism { x, y, z }| {
                 let (s1, s2, s3) = ((x * y), (y * z), (z * x));
@@ -37,7 +41,18 @@ impl Solution for Problem {
     }
 
     fn part_b(&self) -> anyhow::Result<String> {
-        todo!()
+        let answer: u64 = self
+            .boxes()
+            .into_iter()
+            .map(|RightRectangularPrism { x, y, z }| {
+                let mut nums = vec![x, y, z];
+                nums.sort_unstable();
+
+                2 * nums[0] + 2 * nums[1] + x * y * z
+            })
+            .sum();
+
+        Ok(format!("{}", answer))
     }
 }
 

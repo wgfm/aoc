@@ -2,6 +2,7 @@ use anyhow::Result;
 
 use crate::y2015;
 use crate::y2020;
+use crate::y2023;
 
 #[macro_export]
 macro_rules! solution {
@@ -29,6 +30,7 @@ pub fn problems_for_year(year: u64) -> Result<Vec<Box<dyn Solution>>> {
     match year {
         2015 => y2015::solutions(),
         2020 => y2020::solutions(),
+        2023 => y2023::solutions(),
         _ => Ok(vec![]),
     }
 }

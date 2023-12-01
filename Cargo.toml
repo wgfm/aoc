@@ -8,5 +8,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.75"
 clap = { version = "4.4.8", features = ["derive"] }
+md5 = "0.7.0"
 nom = "7.1.3"
+regex = "1.10.2"
 reqwest = { version = "0.11.22", features = ["blocking"] }

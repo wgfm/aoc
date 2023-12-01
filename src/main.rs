@@ -3,6 +3,7 @@ mod site;
 
 mod y2015;
 mod y2020;
+mod y2023;
 
 use clap::Parser;
 
