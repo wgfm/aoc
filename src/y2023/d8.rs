@@ -50,18 +50,14 @@ impl Solution for Problem {
 
         let mut loop_lengths: Vec<u64> = vec![];
         for starting_point in starting_points {
-            let mut visited = HashMap::new();
-
-            let mut directions = graph.directions.iter().enumerate().cycle();
+            let mut directions = graph.directions.iter().cycle();
 
             let mut curr: &str = &starting_point;
             let mut loop_len = 0;
             while !curr.ends_with('Z') {
                 loop_len += 1;
 
-                let (i, dir) = directions.next().unwrap();
-
-                visited.insert((curr, i), loop_len);
+                let dir = directions.next().unwrap();
 
                 let (left, right) = graph.adjacency_map.get(curr).unwrap();
                 curr = if dir == &'L' { left } else { right };
