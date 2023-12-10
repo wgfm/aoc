@@ -108,30 +108,30 @@ fn next_step(maze: &Vec<Vec<char>>, curr: (usize, usize), prev: (usize, usize)) 
 
 fn first_step(maze: &Vec<Vec<char>>, curr: (usize, usize), prev: (usize, usize)) -> (usize, usize) {
     let candidate = (curr.0, curr.1 + 1);
-    match maze.get(candidate.1).map(|r| r.get(candidate.0)) {
+    match maze.get(candidate.1).and_then(|r| r.get(candidate.0)) {
         // one down
-        Some(Some(&'|')) | Some(Some(&'L')) | Some(Some(&'J')) => return candidate,
+        Some(&'|') | Some(&'L') | Some(&'J') => return candidate,
         _ => (),
     };
 
     let candidate = (curr.0, curr.1.saturating_sub(1));
-    match maze.get(candidate.1).map(|r| r.get(candidate.0)) {
+    match maze.get(candidate.1).and_then(|r| r.get(candidate.0)) {
         // one up
-        Some(Some(&'|')) | Some(Some(&'7')) | Some(Some(&'F')) => return candidate,
+        Some(&'|') | Some(&'7') | Some(&'F') => return candidate,
         _ => (),
     };
 
     let candidate = (curr.0 + 1, curr.1);
-    match maze.get(candidate.1).map(|r| r.get(candidate.0)) {
+    match maze.get(candidate.1).and_then(|r| r.get(candidate.0)) {
         // one right
-        Some(Some(&'-')) | Some(Some(&'J')) | Some(Some(&'7')) => return candidate,
+        Some(&'-') | Some(&'J') | Some(&'7') => return candidate,
         _ => (),
     };
 
     let candidate = (curr.0.saturating_sub(1), curr.1);
-    match maze.get(candidate.1).map(|r| r.get(candidate.0)) {
+    match maze.get(candidate.1).and_then(|r| r.get(candidate.0)) {
         // one left
-        Some(Some(&'-')) | Some(Some(&'L')) | Some(Some(&'F')) => return candidate,
+        Some(&'-') | Some(&'L') | Some(&'F') => return candidate,
         _ => (),
     };
 
