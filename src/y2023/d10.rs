@@ -40,7 +40,7 @@ impl Solution for Problem {
             for x in 0..maze[y].len() {
                 let c = maze[y][x];
                 match c {
-                    '|' | 'L' | 'J' => {
+                    '|' | 'L' | 'J' | 'S' => {
                         num_north_pipes += 1;
                     }
                     _ => {}
