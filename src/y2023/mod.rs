@@ -14,6 +14,7 @@ mod d12;
 mod d13;
 mod d14;
 mod d15;
+mod d16;
 
 use crate::problem::Solution;
 
@@ -34,5 +35,6 @@ pub fn solutions() -> anyhow::Result<Vec<Box<dyn Solution>>> {
         Box::new(d13::Problem::new()?),
         Box::new(d14::Problem::new()?),
         Box::new(d15::Problem::new()?),
+        Box::new(d16::Problem::new()?),
     ])
 }
