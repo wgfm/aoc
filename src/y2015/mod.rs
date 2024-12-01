@@ -5,6 +5,7 @@ mod d2;
 mod d3;
 mod d4;
 mod d5;
+mod d6;
 
 fn b<T: Solution>(t: T) -> Box<T> {
     Box::new(t)
@@ -17,5 +18,6 @@ pub fn solutions() -> anyhow::Result<Vec<Box<dyn Solution>>> {
         b(d3::Problem::new()?),
         b(d4::Problem::new()?),
         b(d5::Problem::new()?),
+        b(d6::Problem::new()?),
     ])
 }
